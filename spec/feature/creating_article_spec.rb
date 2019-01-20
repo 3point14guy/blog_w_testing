@@ -6,7 +6,7 @@ RSpec.feature 'Creating Articles' do
     click_link 'New Article'
     fill_in 'Title', with: "A Capybara Test Article"
     fill_in 'Body', with: "most of these methods here are capybara."
-    click_button 'Post Article'
+    click_button 'Create Article'
 
     expect(page).to have_content("Article has been posted.")
     expect(page.current_path).to eq(articles_path)
@@ -17,7 +17,7 @@ RSpec.feature 'Creating Articles' do
     click_link 'New Article'
     fill_in 'Title', with: ""
     fill_in 'Body', with: ""
-    click_button 'Post Article'
+    click_button 'Create Article'
 
     expect(page).to have_content("Article not posted.")
     expect(page).to have_content("Title can't be blank")

@@ -1,7 +1,7 @@
 <%= link_to "New Article", new_article_path, class: "btn btn-outline-success", id: "new-article-btn" %>
 
 <% if @articles.empty? %>
-  <h1 id="no-articles">No Articles have been created.</h1>
+  <h3 id="no-articles">No Articles have been created.</h3>
 <% else %>
   <% @articles.each do |article| %>
     <div class="card card-light">

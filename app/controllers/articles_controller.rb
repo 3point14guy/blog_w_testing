@@ -7,6 +7,21 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
+  def edit
+    @article = Article.find(params[:id])
+  end
+
+  def update
+    @article = Article.find(params[:id])
+    if @article.update(article_params)
+      flash[:success] = "Article has been updated."
+      redirect_to @article
+    else
+      flash.now[:danger] = "Article did not update."
+      render :edit
+    end
+  end
+
   def new
     @article = Article.new
   end
@@ -29,7 +44,7 @@ protected
     flash[:alert] = message
     redirect_to root_path
   end
-  
+
 private
 
   def article_params
