@@ -1,1 +1,15 @@
-<%= link_to "New Article", new_article_path %>
+<%= link_to "New Article", new_article_path, class: "btn btn-outline-success", id: "new-article-btn" %>
+
+<% @articles.each do |article| %>
+  <div class="card card-light">
+    <div class="card-header">
+      <%= link_to article.title, articles_path(article) %>
+    </div>
+    <div class="card-body">
+      <div class="card-text">
+        <%= truncate(article.body, length: 250) %>
+      </div>
+    </div>
+  </div>
+  <br>
+<% end %>
