@@ -4,7 +4,7 @@
   <div class="col-md-12">
     <%= form_for(@article, :html => {class: "form-horizontal", role: "form"}) do |f| %>
       <% if @article.errors.any? %>
-        <div class="card text-white bg-danger col-md-offset-1">
+        <div class="card bg-light col-md-offset-1">
           <div class="card-body">
             <h5 class="card-title">
               <%= pluralize(@article.errors.count, "error") %>
