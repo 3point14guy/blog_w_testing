@@ -9,9 +9,13 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    @article.save
-    flash[:success] = "Article has been posted."
-    redirect_to articles_path
+    if @article.save
+      flash[:success] = "Article has been posted."
+      redirect_to articles_path
+    else
+      flash[:danger] = "Article not posted."
+      render :new
+    end
   end
 
 private
