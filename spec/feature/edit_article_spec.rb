@@ -2,13 +2,15 @@ require 'rails_helper'
 
 RSpec.feature "Edit Article" do
   before do
-    @article = Article.create(title: "First Article", body: "Lorem ipsum dolor sit amet.")
+    user = User.create!(email: "name@mail.com", password: "secret", password_confirmation: "secret")
+    login_as(user)
+    @article = Article.create(title: "First Article", body: "Lorem ipsum dolor sit amet.", user: user)
   end
 
   scenario "user edits an article successfully" do
     visit "/"
     click_link @article.title
-    click_link "Edit Article" 
+    click_link "Edit Article"
     fill_in "Title", with: "Updated Article Title"
     fill_in "Body", with: "Updated article text here."
     click_button "Update Article"
