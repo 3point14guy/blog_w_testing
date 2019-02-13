@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Articles", type: :request do
   before do
     @user1 = User.create(email: "name@mail.com", password: "secret")
-    @user2 = User.create(email: "name@mail.com", password: "secret")
+    @user2 = User.create(email: "name2@mail.com", password: "secret1")
     @article = Article.create!(title: "First Article", body: "Lorem ipsum dolor sit amet.", user: @user1)
   end
 
