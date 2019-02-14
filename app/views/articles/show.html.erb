@@ -18,7 +18,7 @@
 </article>
 <hr>
 <div class="col-md-">
-  <%= form_for [@article, @comment], :html => {class: "form-horizontal", role: "form"} do |f| %>
+  <%= form_for [@article, @comment], remote: true, :html => {class: "form-horizontal", role: "form"} do |f| %>
     <% if @article.errors.any? %>
       <div class="card bg-light col-md-10 offset-md-1">
         <div class="card-body">
@@ -60,15 +60,17 @@
   </header>
   <div class="col-md-10">
     <% if @article.comments.any? %>
-      <% persisted_comments(@comments).each do |comment| %>
-        <div class="comment-body">
-          <%= comment.body %>
+      <div id="messages">
+        <% persisted_comments(@comments).each do |comment| %>
+          <div class="comment-body">
+            <%= comment.body %>
+          </div>
+          <div class="comment-time">
+            Created <%= time_ago_in_words(comment.created_at)%> ago by <%= comment.user.email %>
+          </div>
+          <hr>
+        <% end %>
         </div>
-        <div class="comment-time">
-          Created <%= time_ago_in_words(comment.created_at)%> ago by <%= comment.user.email %>
-        </div>
-        <hr>
-      <% end %>
     <% else %>
       This article does not have any comments yet.
     <% end %>
